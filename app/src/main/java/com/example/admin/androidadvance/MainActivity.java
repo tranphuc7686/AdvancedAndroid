@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
 
 
-                DialogGetNameOfHero(getBitmapFromUri(data.getData()));
+                new TienTrinhLoadAnhTuGrally().execute(data.getData());
 
 
             }
@@ -148,5 +149,28 @@ public class MainActivity extends AppCompatActivity {
 
         }
         return bitmap;
+    }
+    class TienTrinhLoadAnhTuGrally extends AsyncTask<Uri,Bitmap,Bitmap>{
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Toast.makeText(getBaseContext(),"Đang Xử Lý Ảnh..",Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        protected Bitmap doInBackground(Uri... uris) {
+
+            return getBitmapFromUri(uris[0]);
+        }
+
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+            DialogGetNameOfHero(bitmap);
+            Toast.makeText(getBaseContext(),"Đã Xử Lý Xong !! ",Toast.LENGTH_SHORT).show();
+
+        }
     }
 }
