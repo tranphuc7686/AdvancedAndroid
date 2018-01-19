@@ -16,13 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:weightSum="3">
+
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:id="@+id/btnPlayNoti"
-            android:src="@mipmap/ic_playmucsic"/>
-        <ImageButton
+            android:id="@+id/btnPauseNotice"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
@@ -31,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:src="@mipmap/ic_goplayer"/>
+            android:src="@drawable/ic_stop"/>
 
     </LinearLayout>
 
